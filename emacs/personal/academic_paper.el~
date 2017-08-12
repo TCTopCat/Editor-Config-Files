@@ -1,0 +1,3 @@
+(add-to-list 'org-export-latex-classes '("physrev"
+					 "\\documentclass{revtex4}"
+					 ("\\section{%s}" . "\\section*{%s}")))

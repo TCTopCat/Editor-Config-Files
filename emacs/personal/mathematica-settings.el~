@@ -1,0 +1,7 @@
+					;((autoload 'wolfram-mode "wolfram-mode" nil t) (autoload 'run-wolfram "wolfram-mode" nil t) (setq wolfram-program "/Applications/Mathematica.app/Contents/MacOS/MathKernel") (add-to-list 'auto-mode-alist '("\.wl$" . wolfram-mode)) (setq wolfram-path "directory-in-Mathematica-$Path") ;; e.g. on Linux "~/.Mathematica/Applications")
+
+(use-package wolfram-mode
+  :init (add-to-list 'auto-mode-alist '("\\.wl\\'" . wolfram-mode)
+		     (setq wolfram-program "/usr/local/bin/mathematica")
+					;		     (setq wolfram-path "~/.Mathematica/Applications/")
+		     ))

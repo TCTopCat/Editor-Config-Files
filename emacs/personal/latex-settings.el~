@@ -1,0 +1,10 @@
+;; LaTeX editing settings
+;; Fundamental
+(use-package tex
+  :defer t
+  :ensure auctex
+  :config
+  (setq TeX-auto-save t))
+
+(add-hook 'LaTeX-mode-hook 'set-buffer-variable-pitch)
+(add-hook 'LaTeX-mode-hook 'olivetti-mode)

@@ -1,0 +1,7 @@
+(setq some-alist '((pine .cones)
+				   (oak . acorns)
+				   (maple . seeds)))
+
+(This is aanother test)
+(This is aanother test2)
+(This is aanother test3)

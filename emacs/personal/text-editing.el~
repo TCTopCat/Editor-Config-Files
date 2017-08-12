@@ -1,0 +1,13 @@
+;; Text formatting
+(use-package smartparens
+  :ensure t
+  :config
+  (smartparens-global-mode t))
+(show-paren-mode 1)
+(use-package aggressive-indent
+  :ensure t
+  :config
+  (global-aggressive-indent-mode 1)
+;  (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
+  )
+

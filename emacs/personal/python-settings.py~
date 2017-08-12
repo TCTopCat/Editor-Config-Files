@@ -1,0 +1,1 @@
+(setq py-python-command "python3")

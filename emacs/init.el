@@ -25,7 +25,7 @@
 
 ;; Load settings
 (setq use-package-always-ensure t)
-(add-to-list 'load-path "./personal")
+(add-to-list 'load-path "~/config-files/emacs/personal")
 
 (load "display.el")
 (load "interface.el")

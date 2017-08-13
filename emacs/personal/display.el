@@ -21,16 +21,14 @@
 				  evil-window-up
 				  evil-window-down))))
 
-
-
 ;; Text layout
 (setq-default tab-width 4)
 (use-package adaptive-wrap
+  :diminish visual-line-mode
   :config
   (add-hook 'visual-line-mode-hook
 			(lambda ()
-			  (adaptive-wrap-prefix-mode t)
-			  (diminish visual-line-mode)))
+			  (adaptive-wrap-prefix-mode t)))
   )
 (global-visual-line-mode t)
 

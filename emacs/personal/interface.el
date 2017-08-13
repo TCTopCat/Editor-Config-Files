@@ -31,7 +31,9 @@
   (define-key company-active-map (kbd "C-n") 'company-select-next)
   (define-key company-active-map (kbd "C-p") 'company-select-previous))
 
-;Setting up evil
+(use-package neotree)
+
+										;Setting up evil
 (use-package evil
   :init
   (use-package evil-leader

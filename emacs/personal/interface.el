@@ -34,7 +34,6 @@
 ;Setting up evil
 (use-package evil
   :init
-  
   (use-package evil-leader
 	:config
     (global-evil-leader-mode)

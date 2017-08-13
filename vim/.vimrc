@@ -98,7 +98,7 @@ syntax on
 
 "Common File Access
 "Open .vimrc
-nnoremap <leader>rc :tabe ~/.vimrc<CR>:CentreText<CR>
+nnoremap <leader>rc :tabe ~/config-files/vim/.vimrc<CR>:CentreText<CR>
 
 "Centre Text options
 command! CentreText :source ~/.vim/VimScripts/CentreText.vim

@@ -5,6 +5,7 @@
 
 ;; Global packages
 (use-package helm
+  :diminish helm-mode
   :bind (("M-SPC" . helm-M-x)
 		 ("M-y" . helm-show-kill-ring)
 		 ("C-x C-f" . helm-find-files)
@@ -32,9 +33,44 @@
 
 ;Setting up evil
 (use-package evil
+  :init
+  
+  (use-package evil-leader
+	:config
+    (global-evil-leader-mode)
+	(evil-leader/set-leader "<SPC>")
+	(evil-leader/set-key
+	  "," 'other-window
+	  "." 'mode-line-other-buffer
+	  "b" 'helm-mini
+	  "c" 'comment-dwim
+	  "d" 'kill-this-buffer
+	  "f" 'helm-imenu
+	  "h" 'fontify-and-browse
+	  "l" 'whitespace-mode
+	  "o" 'delete-other-windows
+	  "p" 'helm-show-kill-ring
+	  "s" 'sp-up-sexp
+	  "w" 'save-buffer
+	  "x" 'helm-M-x
+	  "y" 'yank-to-x-clipboard)
+	)
+  (use-package evil-surround
+    :config
+    (global-evil-surround-mode))
+  (use-package evil-smartparens
+	:config
+	(evil-smartparens-mode t))
+  (use-package evil-goggles
+	:config
+	(evil-goggles-mode)
+	(evil-goggles-use-diff-faces))
+  (use-package evil-indent-plus)
+
   :config
   (evil-mode 1)
 										; Basic navigation
+  :config
   (define-key evil-normal-state-map 
     "h" 'evil-backward-char)
   (define-key evil-visual-state-map 
@@ -65,6 +101,15 @@
   (define-key evil-normal-state-map (kbd "M-n") 'evil-window-up)
   (define-key evil-normal-state-map (kbd "M-s") 'evil-window-right)
 										; Escape quits everything
+  (defun minibuffer-keyboard-quit ()
+	"Abort recursive edit.
+In Delete Selection mode, if the mark is active, just deactivate it;
+then it takes a second \\[keyboard-quit] to abort the minibuffer."
+	(interactive)
+	(if (and delete-selection-mode transient-mark-mode mark-active)
+		(setq deactivate-mark  t)
+	  (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+	  (abort-recursive-edit)))
   (define-key evil-normal-state-map [escape] 'keyboard-quit)
   (define-key evil-visual-state-map [escape] 'keyboard-quit)
   (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
@@ -72,28 +117,12 @@
   (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
   (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
   (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+  (global-set-key [escape] 'evil-exit-emacs-state)
+
 
 										; Working with Helm
   (define-key evil-ex-map "b" 'helm-mini)
-  (define-key evil-ex-map "e" 'helm-find-files)
-  
-  (use-package evil-leader
-    :config
-    (global-evil-leader-mode))
-
-  (use-package evil-surround
-    :config
-    (global-evil-surround-mode))
-
-  (use-package evil-smartparens
-	:config
-	(evil-smartparens-mode t)
-    )
-  (use-package evil-goggles
-	:config
-	(evil-goggles-mode)
-	(evil-goggles-use-diff-faces)
-	))
+  (define-key evil-ex-map "e" 'helm-find-files))
 
 (with-eval-after-load 'evil-maps
   (define-key evil-motion-state-map (kbd ":") 'evil-repeat-find-char)
@@ -105,9 +134,3 @@
 (recentf-mode t)
 (setq recetnf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
-
-
-
-
-
-

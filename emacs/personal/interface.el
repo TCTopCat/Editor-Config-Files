@@ -50,11 +50,11 @@
 	  "l" 'whitespace-mode
 	  "o" 'delete-other-windows
 	  "p" 'helm-show-kill-ring
+	  "s" 'sp-up-sexp
 	  "w" 'save-buffer
 	  "x" 'helm-M-x
 	  "y" 'yank-to-x-clipboard)
 	)
-  
   (use-package evil-surround
     :config
     (global-evil-surround-mode))
@@ -122,8 +122,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 										; Working with Helm
   (define-key evil-ex-map "b" 'helm-mini)
-  (define-key evil-ex-map "e" 'helm-find-files)
-  )
+  (define-key evil-ex-map "e" 'helm-find-files))
 
 (with-eval-after-load 'evil-maps
   (define-key evil-motion-state-map (kbd ":") 'evil-repeat-find-char)
@@ -135,9 +134,3 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (recentf-mode t)
 (setq recetnf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
-
-
-
-
-
-

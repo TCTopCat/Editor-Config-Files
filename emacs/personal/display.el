@@ -3,7 +3,11 @@
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 (setq-default frame-title-format '("%f"))
+										; Themes
+(use-package zenburn-theme
+  :defer t)
 (use-package material-theme)
+										; Window display
 (use-package powerline
   :config (powerline-center-evil-theme))
 (use-package transpose-frame)

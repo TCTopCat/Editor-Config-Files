@@ -21,6 +21,7 @@
 
 
 (use-package company
+  :diminish company-mode
   :config
   (global-company-mode)
   (setq company-idle-delay 0.2)

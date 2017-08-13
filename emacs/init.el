@@ -14,8 +14,7 @@
   (require 'use-package))
 (require 'diminish)
 (require 'bind-key)
-
-					;---------------------------------------------------------------------------
+										;---------------------------------------------------------------------------
 
 (defun find-user-init-file ()
   "Edit the 'user-init-file in another window."

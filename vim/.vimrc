@@ -55,7 +55,7 @@ set spell spelllang=en_gb
 set langmap=sl,jt,tj,kn,nk,ls
 "Null
 noremap Q <ESC>
-nnoremap ; :
+nnoremap - :
 
 "Display options
 set title

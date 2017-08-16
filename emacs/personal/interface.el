@@ -4,7 +4,9 @@
 (global-set-key (kbd "<f5>") 'revert-buffer)
 
 ;; Client-server properties
-										;(server-start)
+(require 'server)
+(unless (server-running-p)
+	(server-start))
 
 ;; Global packages
 (use-package helm

@@ -1,0 +1,40 @@
+;; Keep org up-to-date ?? Need better way to do this
+
+;; ORG helper Functions
+(setq org-enforce-todo-dependencies t)
+(defun find-main-todo-file ()
+  "Opens the main to-do file."
+  (interactive)
+  (find-file-other-window "~/Documents/ORG-mode/TODOs.org"))
+
+(use-package org
+  ;; :ensure org-plus-contrib
+  :defer t
+  :bind
+  (("C-c t" . find-main-todo-file)
+   ("C-c a" . org-agenda)
+   ("C-c c" . org-capture)
+   ("C-c l " . org-store-link)
+   ("C-c b " . org-iswitchb)))
+(use-package org-ref
+  :after org
+  :init
+  (setq reftex-default-bibliography '("~/Documents/Postdoc-Glasgow/references.bib"))
+  (setq org-ref-bibliography-notes "~/Documents/Postdoc-Glasgow/BibNotes/bib-notes.org"
+		org-ref-default-bibliography '("~/Documents/Postdoc-Glasgow/references.bib")
+		org-ref-pdf-directory "~/Documents/Postdoc-Glasgow/Papers/")
+  (setq helm-bibtex-bibliography  "~/Documents/Postdoc-Glasgow/references.bib/")
+  (setq helm-bibtex-library-path "~/Documents/Postdoc-Glasgow/Papers/"))
+
+
+;; Custom capture templates
+(setq org-capture-templates
+	  '(("t" "todo" entry (file org-default-notes-file)
+		 "* TODO %?\n%u\n%a\n" :clock-in t :clock-resume t)
+		("m" "Meeting" entry (file org-default-notes-file)
+		 "*MEETING with %? :MEETING:\n%t" :clock-in t :clock-resume
+		 ("i" "Idea" entry (file org-default-notes-file)
+		  "* %? :IDEA: \n%t" :clock-in t :clock-resume t)
+		 ("n" "Next Task" entry (file+headline org-default-notes-file "Tasks")
+		  "** NEXT %? \nDEADLINE: %t"))))
+

@@ -23,5 +23,5 @@ alias dfs='cd /home/tc/texmf/tex/latex/StyleFiles/Thesis/Definitions-Maths && gv
 
 
 #Programs
-alias e='emacsclient --alternate-editor "~/config-files/bash/emacs-daemon.bash" -c &'
+alias e='emacsclient --alternate-editor="emacs" -c '
 

@@ -32,7 +32,7 @@
 (load "git-interface.el")
 (load "text-editing.el")
 (load "org-mode-settings.el")
-(load "latex-settings.el")
+;; (load "latex-settings.el")
 (load "python-settings.el")
 (load "mathematica-settings.el")
 

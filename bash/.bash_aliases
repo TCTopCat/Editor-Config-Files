@@ -22,4 +22,6 @@ alias th='cd /home/tc/Dropbox/Thesis/LaTeX_Files	&& gvim -p 2016ClarkPhD.tex /ho
 alias dfs='cd /home/tc/texmf/tex/latex/StyleFiles/Thesis/Definitions-Maths && gvim -p MathsDefs.tex MDs-Logic.tex MDs-Light.tex MDs-Atoms.tex MDs-Quantum.tex MDs-Units.tex  && exit'
 
 
+#Programs
+alias e='emacsclient --alternate-editor "~/config-files/bash/emacs-daemon.bash" -c &'
 

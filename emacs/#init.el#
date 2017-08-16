@@ -1,4 +1,4 @@
-up ;; setting USEu-package
+;; setting up use-package
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
@@ -14,32 +14,32 @@ up ;; setting USEu-package
   (require 'use-package))
 (require 'diminish)
 (require 'bind-key)
-
-					;---------------------------------------------------------------------------
+										;---------------------------------------------------------------------------
 
 (defun find-user-init-file ()
   "Edit the 'user-init-file in another window."
   (interactive)
-  (find-file-other-frame user-init-file))
+  (find-file-other-window user-init-file))
+
 (global-set-key (kbd "C-c i") 'find-user-init-file)
+(olivetti-mode t)
 
 ;; Load settings
 (setq use-package-always-ensure t)
-(add-to-list 'load-path "./personal")
+(add-to-list 'load-path "~/config-files/emacs/personal")
 
 (load "display.el")
 (load "interface.el")
 (load "git-interface.el")
 (load "text-editing.el")
-(load "time-management.el")
+(load "org-mode-settings.el")
+(load "latex-settings.el")
 (load "python-settings.el")
 (load "mathematica-settings.el")
-(load "latex-settings.el")
-(load "academic-paper.el")
 
 ;;; init.el ends here
 
-;---------------------------------------------------------------------------
+										;---------------------------------------------------------------------------
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

@@ -3,6 +3,9 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (global-set-key (kbd "<f5>") 'revert-buffer)
 
+;; Client-server properties
+										;(server-start)
+
 ;; Global packages
 (use-package helm
   :diminish helm-mode
@@ -33,7 +36,7 @@
 
 (use-package neotree)
 
-										;Setting up evil
+;; Setting up evil
 (use-package evil
   :init
   (use-package evil-leader
@@ -48,6 +51,7 @@
 	  "d" 'kill-this-buffer
 	  "f" 'helm-imenu
 	  "h" 'fontify-and-browse
+	  "i" 'find-user-init-file
 	  "l" 'whitespace-mode
 	  "o" 'delete-other-windows
 	  "p" 'helm-show-kill-ring

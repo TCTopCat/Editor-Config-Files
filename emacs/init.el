@@ -21,6 +21,7 @@
   (interactive)
   (find-file-other-window user-init-file))
 (global-set-key (kbd "C-c i") 'find-user-init-file)
+(olivetti-mode t)
 
 ;; Load settings
 (setq use-package-always-ensure t)
@@ -31,14 +32,13 @@
 (load "git-interface.el")
 (load "text-editing.el")
 (load "org-mode-settings.el")
+(load "latex-settings.el")
 (load "python-settings.el")
 (load "mathematica-settings.el")
-(load "latex-settings.el")
-(load "academic-paper.el")
 
 ;;; init.el ends here
 
-;---------------------------------------------------------------------------
+										;---------------------------------------------------------------------------
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

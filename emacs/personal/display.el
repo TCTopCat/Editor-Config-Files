@@ -3,7 +3,12 @@
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 (setq-default frame-title-format '("%f"))
-										; Themes
+
+(setq split-height-threshold nil)
+(setq split-width-threshold 70)
+
+
+;; Themes
 (use-package zenburn-theme
   :defer t)
 (use-package material-theme)
@@ -84,9 +89,3 @@
 
 
 
-;; ORG mode
-(use-package org-bullets
-  :config
-  (add-hook 'org-mode-hook (lambda ()
-							 (org-bullets-mode 1)
-							 (org-indent-mode 1))))

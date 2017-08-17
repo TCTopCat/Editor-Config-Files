@@ -58,6 +58,7 @@
 	  "o" 'delete-other-windows
 	  "p" 'helm-show-kill-ring
 	  "s" 'sp-up-sexp
+	  "t" 'find-main-todo-file
 	  "w" 'save-buffer
 	  "x" 'helm-M-x
 	  "y" 'yank-to-x-clipboard)

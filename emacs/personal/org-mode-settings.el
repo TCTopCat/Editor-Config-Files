@@ -27,6 +27,12 @@
   (setq helm-bibtex-library-path "~/Documents/Postdoc-Glasgow/Papers/"))
 
 
+(eval-after-load "org"
+  '(add-to-list 'org-structure-template-alist
+				'("L" "#+BEGIN_LATEX\n?\n#+END_LATEX" "")))
+
+
+
 ;; Custom capture templates
 (setq org-capture-templates
 	  '(("t" "todo" entry (file org-default-notes-file)

@@ -2,8 +2,8 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))																									  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
-
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))																		 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")																										  )
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/")																										  )
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -32,7 +32,7 @@
 (load "git-interface.el")
 (load "text-editing.el")
 (load "org-mode-settings.el")
-;; (load "latex-settings.el")
+(load "latex-settings.el")
 (load "python-settings.el")
 (load "mathematica-settings.el")
 

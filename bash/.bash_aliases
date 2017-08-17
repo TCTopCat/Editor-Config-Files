@@ -23,5 +23,5 @@ alias dfs='cd /home/tc/texmf/tex/latex/StyleFiles/Thesis/Definitions-Maths && gv
 
 
 #Programs
-alias e='emacsclient --alternate-editor="emacs" -c '
+alias e='emacsclient --alternate-editor="emacs" -c --frame-parameters="((height . 80) (width . 83) (left . 1500))" '
 

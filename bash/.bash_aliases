@@ -23,5 +23,9 @@ alias dfs='cd /home/tc/texmf/tex/latex/StyleFiles/Thesis/Definitions-Maths && gv
 
 
 #Programs
+<<<<<<< HEAD
 alias e='emacsclient --alternate-editor="emacs" -c --frame-parameters="((height . 80) (width . 83) (left . 1500))" '
+=======
+alias e='emacsclient --alternate-editor="emacs" -e "(select-frame-set-input-focus (selected-frame))" -c '
+>>>>>>> bd03ac3b3f0809447647547bc6660eb0f1e597d1
 

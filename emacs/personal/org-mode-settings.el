@@ -8,8 +8,8 @@
   (find-file-other-window "~/Documents/ORG-mode/TODOs.org"))
 
 (use-package org
-  ;; :ensure org-plus-contrib
-  :defer t
+  :ensure org-plus-contrib
+  :defer 7
   :bind
   (("C-c t" . find-main-todo-file)
    ("C-c a" . org-agenda)
@@ -27,6 +27,8 @@
   (setq helm-bibtex-library-path "~/Documents/Postdoc-Glasgow/Papers/"))
 
 
+;; Custom structure templates
+										;LaTeX
 (eval-after-load "org"
   '(add-to-list 'org-structure-template-alist
 				'("L" "#+BEGIN_LATEX\n?\n#+END_LATEX" "")))

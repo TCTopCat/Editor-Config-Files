@@ -11,7 +11,10 @@
 ;; Themes
 (use-package zenburn-theme
   :defer t)
-(use-package material-theme)
+(use-package material-theme
+										;  :defer t
+  )
+
 										; Window display
 (use-package powerline
   :config (powerline-center-evil-theme))
@@ -67,8 +70,14 @@
 (add-hook 'Info-mode-hook 'set-buffer-olivetti-variable-pitch)
 (add-hook 'help-mode-hook 'set-buffer-olivetti-variable-pitch)
 
-;; Prettify Symbols
+;; Text Display
+(use-package idle-highlight-mode
+  :init 
+  (idle-highlight-mode t)
+										;TODO: make global
+  )
 
+;; Prettify Symbols
 (defun prettify-letters ()
   "Assigns replacement unicode characters to certain string sequences."
   (interactive)

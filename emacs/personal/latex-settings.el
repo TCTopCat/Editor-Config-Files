@@ -11,6 +11,7 @@
 (use-package ox
   :defer t
   :config
+  (use-package ox-latex)
   ;; ** <<APS journals>>
   (add-to-list 'org-latex-classes '("revtex4-1"
 									"\\documentclass[aps,prl,twocolumn]{revtex4-1}

@@ -1,4 +1,5 @@
 ;; LaTeX editing settings
+
 ;; Fundamental
 (use-package tex
   :defer t
@@ -6,12 +7,30 @@
   :config
   (setq TeX-auto-save t))
 
+;; Text editing / display
+(use-package predictive
+  :init
+  (add-hook 'LaTeX-mode-hook 'predictive-mode t)
+  )
+
 (add-hook 'LaTeX-mode-hook 'set-buffer-olivetti-variable-pitch)
+
+;; Custom structure templates
+										;LaTeX
+(eval-after-load "org"
+  '(add-to-list 'org-structure-template-alist
+				'("L" "#+BEGIN_LATEX\n?\n#+END_LATEX" "")))
+
+;; Default figure placement
+(setq org-latex-default-figure-position "tbp" )
+
 
 (use-package ox
   :defer t
   :config
-  (use-package ox-latex)
+  (use-package ox-latex
+	:ensure f
+	)
   ;; ** <<APS journals>>
   (add-to-list 'org-latex-classes '("revtex4-1"
 									"\\documentclass[aps,prl,twocolumn]{revtex4-1}
@@ -32,7 +51,7 @@
 									("\\subparagraph{%s}" .
 									 "\\subparagraph*{%s}")))
   )
-=======
+
 ;; (use-package ox
 ;;   :defer t
 ;;   :config
@@ -56,4 +75,3 @@
 ;; 									("\\subparagraph{%s}" .
 ;; 									 "\\subparagraph*{%s}")))
 ;;   )
->>>>>>> 70805b7b1699f04f0d075fea0acb4208c219e700

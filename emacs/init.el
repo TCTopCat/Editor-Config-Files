@@ -21,7 +21,7 @@
   (interactive)
   (find-file-other-window user-init-file))
 (global-set-key (kbd "C-c i") 'find-user-init-file)
-(olivetti-mode t)
+(olivetti-mode t) 						;prettifies the init file buffer
 
 ;; Load settings
 (setq use-package-always-ensure t)

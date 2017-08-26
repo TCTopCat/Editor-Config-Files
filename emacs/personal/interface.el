@@ -1,7 +1,8 @@
 ;;; Interface
-
 (fset 'yes-or-no-p 'y-or-n-p)
 (global-set-key (kbd "<f5>") 'revert-buffer)
+(use-package which-key)
+(setq which-key-mode t)
 
 ;; Client-server properties
 (require 'server)
@@ -12,9 +13,6 @@
 (use-package helm
   :diminish helm-mode
   :bind (("M-SPC" . helm-M-x)
-		 ("M-y" . helm-show-kill-ring)
-		 ("C-x C-f" . helm-find-files)
-		 ("M-s o" . helm-find-files)
 		 ("<escape>" . keyboard-quit)
 		 )
   :config
@@ -24,6 +22,13 @@
   (setq helm-echo-input-in-header-line t)
   (define-key helm-map (kbd "S-SPC") 'helm-toggle-visible-mark)
   (define-key helm-find-files-map (kbd "C-k") 'helm-find-files-up-one-level))
+
+(use-package avy
+  :config
+  (setq avy-keys (list ?u?h?e?t?o?n?a?s?i?d))
+  (setq avy-background t))
+
+(use-package flycheck)
 
 
 (use-package company
@@ -36,8 +41,6 @@
   (define-key company-active-map (kbd "C-n") 'company-select-next)
   (define-key company-active-map (kbd "C-p") 'company-select-previous))
 
-(use-package neotree)
-
 ;; Setting up evil
 (use-package evil
   :init
@@ -46,6 +49,7 @@
     (global-evil-leader-mode)
 	(evil-leader/set-leader "<SPC>")
 	(evil-leader/set-key
+	  "SPC" 'avy-goto-word-or-subword-1'
 	  "," 'other-window
 	  "." 'mode-line-other-buffer
 	  "b" 'helm-mini

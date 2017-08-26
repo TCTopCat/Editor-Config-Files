@@ -27,14 +27,6 @@
   (setq helm-bibtex-library-path "~/Documents/Postdoc-Glasgow/Papers/"))
 
 
-;; Custom structure templates
-										;LaTeX
-(eval-after-load "org"
-  '(add-to-list 'org-structure-template-alist
-				'("L" "#+BEGIN_LATEX\n?\n#+END_LATEX" "")))
-
-
-
 ;; Custom capture templates
 (setq org-capture-templates
 	  '(("t" "todo" entry (file org-default-notes-file)
@@ -52,3 +44,8 @@
   (add-hook 'org-mode-hook (lambda ()
 							 (org-bullets-mode 1)
 							 (org-indent-mode 1))))
+
+;; ORG document settings/functions
+(setq org-src-fontify-natively t)
+
+;; TODO: drag-n-drop file to org document inserts link to file

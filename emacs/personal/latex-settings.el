@@ -11,9 +11,11 @@
 (use-package predictive
   :init
   (add-hook 'LaTeX-mode-hook 'predictive-mode t)
+  (add-hook 'org-mode-hook 'predictive-mode t)
   )
 
 (add-hook 'LaTeX-mode-hook 'set-buffer-olivetti-variable-pitch)
+(add-hook 'LaTeX-mode-hook 'flyspell-mode t)
 
 ;; Custom structure templates
 										;LaTeX

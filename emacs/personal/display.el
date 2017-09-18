@@ -7,14 +7,21 @@
 (setq split-height-threshold nil)
 (setq split-width-threshold 70)
 
-
 ;; Themes
 (use-package zenburn-theme
   :defer t)
 (use-package material-theme
-										;  :defer t
-  )
-
+  :defer t)
+(use-package spacemacs-dark-theme
+  :defer t)
+(use-package darktooth-theme
+  :defer t)
+(use-package atom-one-dark-theme
+  :config
+  (load-theme 'atom-one-dark t))
+(use-package atom-dark-theme
+  :init
+  (load-theme 'atom-dark t))
 										; Window display
 (use-package powerline
   :config (powerline-center-evil-theme))
@@ -87,10 +94,14 @@
 		  ("->" . 8594)    ; →
 		  ("=>" . 8658)    ; ⇒
 		  ("map" . 8614)   ; ↦
-		  ("def" . #x2131) ; ℱ ("!=" . 8800) ; ≠
+		  ("def" . #x2131) ; ℱ
+		  ("!=" . 8800) ; ≠
 		  ("\\[Rho]" . 961) ; ρ
 		  ("\\[Omega]" . 969 ) ; ω
 		  ("\\[CapitalOmega]" . 937) ; Ω
+		  ("\\[CapitalDelta]" . 916 ) ; Δ
+		  ("\\[CapitalPhi]" . 934 ) ; Φ 
+		  ("\\[Phi]" . 966 ) ; φ
 		  )))
 (add-hook 'wolfram-mode-hook 'prettify-letters)
 (global-prettify-symbols-mode t)

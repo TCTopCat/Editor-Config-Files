@@ -11,14 +11,27 @@
   ;; :ensure org-plus-contrib
   :defer 7
   :config
-  (add-hook 'LaTeX-mode-hook 'flyspell-mode t)
   (use-package org-download)
+  ;; LaTeX hook settings
+  (add-hook 'LaTeX-mode-hook 'flyspell-mode t)
+  (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+  (setq org-latex-create-formula-image-program 'imagemagick)
+  (setq org-src-fontify-natively t)
+  (setq org-src-tab-acts-natively t)
+  (setq org-pretty-entities t)
+  (org-babel-do-load-languages 'org-babel-load-languages '((latex . t)))
+  (setq org-babel-default-header-args:latex
+		'((:results . "raw")))
   :bind
   (("C-c t" . find-main-todo-file)
    ("C-c a" . org-agenda)
    ("C-c c" . org-capture)
    ("C-c l " . org-store-link)
    ("C-c b " . org-iswitchb)))
+(eval-after-load 'org
+  '(setf org-highlight-latex-and-related '(latex script entities)))
+
+
 (use-package org-ref
   :after org
   :init
@@ -49,13 +62,13 @@
 							 (org-indent-mode 1)
 							 )))
 
-;; ORG document settings/functions
-(setq org-src-fontify-natively t)
-
 ;; TODO: drag-n-drop file to org document inserts link to file
 
 ;; ORG presentations
-(use-package ox-reveal)
+(use-package ox-reveal
+  :config
+  (setq org-reveal-root "file:///home/tc/Emacs/Presentation/reveal.js")
+  )
 
 
 ;; Hack to get pdf images to display inline
@@ -63,7 +76,7 @@
 	  (quote
 	   ("png" "jpeg" "jpg" "gif" "tiff" "tif" "xbm" "xpm" "pbm" "pgm" "ppm" "pnm" "svg" "pdf" "bmp")))
 
-(setq org-image-actual-width 100)
+(setq org-image-actual-width 400)
 
 (setq org-imagemagick-display-command "convert -density 600 \"%s\" -thumbnail \"%sx%s>\" \"%s\"")
 (defun org-display-inline-images (&optional include-linked refresh beg end)

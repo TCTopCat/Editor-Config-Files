@@ -5,23 +5,22 @@
   :defer t
   :ensure auctex
   :config
-  (setq TeX-auto-save t))
+  (setq TeX-PDF-mode t)
+  (TeX-global-PDF-mode t)
+  (use-package cdlatex))
 
 ;; Text editing / display
-(use-package predictive
-  :init
-  (add-hook 'LaTeX-mode-hook 'predictive-mode t)
-  (add-hook 'org-mode-hook 'predictive-mode t)
-  )
+;; (use-package predictive
+;;   :init
+;;   (add-hook 'LaTeX-mode-hook 'predictive-mode t)
+;;   (add-hook 'org-mode-hook 'predictive-mode t)
+;;   )
 
 (add-hook 'LaTeX-mode-hook 'set-buffer-olivetti-variable-pitch)
 (add-hook 'LaTeX-mode-hook 'flyspell-mode t)
 
 ;; Custom structure templates
 										;LaTeX
-(eval-after-load "org"
-  '(add-to-list 'org-structure-template-alist
-				'("L" "#+BEGIN_LATEX\n?\n#+END_LATEX" "")))
 
 ;; Default figure placement
 (setq org-latex-default-figure-position "tbp" )

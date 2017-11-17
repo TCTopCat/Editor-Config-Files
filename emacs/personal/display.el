@@ -51,6 +51,9 @@
   )
 (global-visual-line-mode t)
 
+(use-package centered-cursor-mode
+  )
+
 
 ;; Global highlighting
 (use-package rainbow-delimiters)

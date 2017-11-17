@@ -35,6 +35,7 @@
 (load "latex-settings.el")
 (load "python-settings.el")
 (load "mathematica-settings.el")
+(load "android-settings.el")
 
 ;;; init.el ends here
 

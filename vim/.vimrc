@@ -1,108 +1,78 @@
-set nocompatible               " be iMproved
+let mapleader = "\<Space>"
 
-"VIm Commands
-let mapleader = ","
+call plug#begin('~/.vim/plugged')
+"Vim Interface
+Plug 'itchyny/lightline.vim'
+"let g:lightline = { 'colorscheme': 'solarized', }               "vim-lightline
+set laststatus=2                                                "vim-lightline
+set noshowmode                                                  "vim-lightline
 
-filetype off                   " required!
-set rtp+=~/.vim/bundle/Vundle.vim/
+"File management
+Plug 'ctrlpvim/ctrlp.vim'
+nnoremap <silent> <Leader>f :CtrlP<CR>
+nnoremap <silent> <Leader>fm :CtrlPMRU<CR>
+nnoremap <silent> <Leader>b :CtrlPBuffer<CR> " cycle between buffer
+nnoremap <silent> <Leader>bb :bn<CR> "create (N)ew buffer
+nnoremap <silent> <Leader>bd :bdelete<CR> "(D)elete the current buffer
+nnoremap <silent> <Leader>bu :bunload<CR> "(U)nload the current buffer
+nnoremap <silent> <Leader>bl :setnomodifiable<CR> " (L)ock the current buffer"
 
-call vundle#begin()
-" let Vundle manage Vundle
-Plugin 'gmarik/vundle.vim'
+"Formatting code
+Plug 'tomtom/tcomment_vim'
+noremap <silent><Leader>cc :Tcomment<CR>
 
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'sjl/gundo.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
-Plugin 'Lokaltog/powerline'
+Plug 'sheerun/vim-polyglot'
+Plug 'editorconfig/editorconfig-vim'
 
-Plugin 'flazz/vim-colorschemes'
-Plugin 'vim-scripts/CSApprox'
+Plug 'vim-syntastic/syntastic'
+set statusline+=%#warningmsg#                                   "syntastic
+set statusline+=%{SyntasticStatuslineFlag()}                    "syntastic
+set statusline+=%*                                              "syntastic
+let g:syntastic_always_populate_loc_list = 1                    "syntastic
+let g:syntastic_auto_loc_list = 1                               "syntastic
+let g:syntastic_check_on_open = 1                               "syntastic
+let g:syntastic_check_on_wq = 0                                 "syntastic
 
-"Plugin 'vim-scripts/Align'
+Plug 'godlygeek/tabular'
+vnoremap <silent> <Leader>cee    :Tabularize /=<CR>              "tabular
+vnoremap <silent> <Leader>cet    :Tabularize /#<CR>              "tabular
+vnoremap <silent> <Leader>ce     :Tabularize /
 
-" vim-scripts repos
-Plugin 'L9'
-Plugin 'FuzzyFinder'
-" non github repos
-Plugin 'git://git.wincent.com/command-t.git'
-call vundle#end()
+Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
+
+call plug#end()
+
+" reloads .vimrc -- making all changes active
+map <silent> <Leader>v :source ~/.vimrc<CR>:PlugInstall<CR>:bdelete<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 
-"Colour scheme options
-syntax on
-"set background=dark
-set t_Co=256
-"colorscheme jellybeans
-colorscheme molokai
-"colorscheme earendel
 
-"LaTeX Options"
-"Rubber Macros
-"Compile
-"nnoremap <leader>c :w<CR> :tabfirst<CR> :lcd %:p:h<CR>:!makeglossaries %:r<CR>:!rubber --pdf --warn all  %<CR>
-nnoremap <leader>c :w<CR> :tabfirst<CR> :lcd %:p:h<CR>:!rubber --pdf --warn all  %<CR>
+" File navigation (instead of NerdTree)
+" absolute width of netrw window
+let g:netrw_winsize = -28
+" tree-view
+let g:netrw_liststyle = 3
+" sort is affecting only: directories on the top, files below
+let g:netrw_sort_sequence = '[\/]$,*'
+" open file in a new tab
+let g:netrw_browse_split = 3
 
-nnoremap <leader>v :tabfirst<CR> :lcd %:p:h<CR> :!evince %:r.pdf &<CR><CR>
+" Code Formatting
+" make backspaces delete sensibly
+set backspace=indent,eol,start
 
-"Spell Checking
-set spell spelllang=en_gb
-
-"Basic Keys
-"set langmap=hk,mj,th,nl,kt,jm,ln
-set langmap=sl,jt,tj,kn,nk,ls
-"Null
-noremap Q <ESC>
-nnoremap - :
-
-"Display options
-set title
-set wrap
-set scrolloff=999
-set showcmd
-set number
-set relativenumber
-set linebreak
-set tw=85
-set fo+=t
-"set foldcolumn=12
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set smarttab
-set smartindent
-set autoindent
-set copyindent
-
-noremap <F10> :CentreText<CR>
-command! Tc tabclose 
-
-"Search Settings
-set ignorecase
+"Interface
+set autowrite
 set smartcase
-set gdefault
-set incsearch
-set showmatch
-set hlsearch
-nnoremap <leader><space> : noh<cr> :w<cr>
+set ignorecase
 
+"Keybindings
+inoremap jj <Esc>
+inoremap kk <Esc> "These are actually really nice sanity-checks
 
-"More useful help
-:cabbrev h tab h
+map <CR> o<Esc>k
 
-"Filetype Options
-filetype plugin indent on
-syntax on
+"Permissions
+cmap w!! %!sudo tee > /dev/null %
 
-"Common File Access
-"Open .vimrc
-nnoremap <leader>rc :tabe ~/config-files/vim/.vimrc<CR>:CentreText<CR>
-
-"Centre Text options
-command! CentreText :source ~/.vim/VimScripts/CentreText.vim
-"hi Normal ctermbg=none
-
-"Run current file in python
-nnoremap <leader>,r :!python3 %

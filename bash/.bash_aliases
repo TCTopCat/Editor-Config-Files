@@ -8,11 +8,12 @@ alias c='clear'
 alias u='c && l' 
 alias l.='c && la -d .*'
 
+alias con='cd ~/config-files && u'
 alias desk='cd ~/Desktop && c'
 alias doc='cd ~/Documents && c'
 alias dow='cd ~/Downloads && c'
 alias drop='cd ~/Dropbox'
-alias postdoc='cd ~/Documents/Postdoc-Glasgow && c' 
+alias wig='cd ~/Wigner'
 
 
 #Programs

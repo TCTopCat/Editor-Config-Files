@@ -77,8 +77,8 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 # Enable bash aliases
-if [ -f ~/.bash_aliases ]; then
-		. ~/.bash_aliases
+if [ -f ~/config-files/bash/.bash_aliases ]; then
+		. ~/config-files/bash/.bash_aliases
 fi
 
 # if the command-not-found package is installed, use it
@@ -93,11 +93,3 @@ if [ -x /usr/lib/command-not-found ]; then
 		fi
 	}
 fi
-
-/usr/bin/mint-fortune
-
-#Mutt options
-MAIL=/home/tc/Mail/Inbox && export MAIL
-
-
-[[ -n "$DISPLAY" && "$TERM" = "xterm" ]] && export TERM=xterm-256color

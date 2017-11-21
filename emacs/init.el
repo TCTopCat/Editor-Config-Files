@@ -2,7 +2,7 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))																		 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (package-initialize)
 
@@ -21,7 +21,6 @@
   (interactive)
   (find-file-other-window user-init-file))
 (global-set-key (kbd "C-c i") 'find-user-init-file)
-(olivetti-mode t) 						;prettifies the init file buffer
 
 ;; Load settings
 (setq use-package-always-ensure t)

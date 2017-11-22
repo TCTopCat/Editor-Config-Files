@@ -1,6 +1,6 @@
 let mapleader = "\<Space>"
 
----------------------------------------------------------------
+"---------------------------------------------------------------
 
 "Automatically install vim-plug
 
@@ -52,6 +52,10 @@ vnoremap <silent> <Leader>ce     :Tabularize /
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 
+"Display
+"Plug '29decibel/codeschool-vim-theme'
+"colorscheme codeschool
+
 call plug#end()
 
 " reloads .vimrc -- making all changes active
@@ -86,4 +90,3 @@ map <CR> o<Esc>k
 
 "Permissions
 cmap w!! %!sudo tee > /dev/null %
-

@@ -55,6 +55,7 @@ Plug 'jiangmiao/auto-pairs'
 "Display
 "Plug '29decibel/codeschool-vim-theme'
 "colorscheme codeschool
+Plug 'junegunn/limelight.vim'
 
 call plug#end()
 

@@ -15,7 +15,8 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-use_color=false
+use_color=true
+archey3
 
 # Set colorful PS1 only on colorful terminals.
 # dircolors --print-database uses its own built-in database

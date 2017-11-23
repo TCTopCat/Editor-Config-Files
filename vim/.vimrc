@@ -53,11 +53,13 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 
 "Display
-"Plug '29decibel/codeschool-vim-theme'
-"colorscheme codeschool
 Plug 'junegunn/limelight.vim'
+Plug 'sonph/onehalf'
 
 call plug#end()
+
+"colorscheme onehalflight
+"let g:lightline.colorscheme='onehalfdark'
 
 " reloads .vimrc -- making all changes active
 map <silent> <Leader>v :source ~/.vimrc<CR>:PlugInstall<CR>:bdelete<CR>:exe ":echo 'vimrc reloaded'"<CR>

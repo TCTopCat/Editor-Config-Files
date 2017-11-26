@@ -65,7 +65,7 @@
 (defun find-main-todo-file ()
   "Opens the main to-do file."
   (interactive)
-  (find-file-other-window "~/Documents/ORG-mode/TODOs.org"))
+  (find-file-other-window "~/ORG-mode/TODOs.org"))
 
 (use-package org-ref
   :after org

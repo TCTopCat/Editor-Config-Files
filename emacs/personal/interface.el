@@ -7,9 +7,13 @@
 ;; Client-server properties
 (require 'server)
 (unless (server-running-p)
-	(server-start))
+  (server-start))
 
 ;; Global packages
+(use-package flycheck
+  :init
+  (global-flycheck-mode))
+
 (use-package helm
   :diminish helm-mode
   :bind (("M-SPC" . helm-M-x)
@@ -27,9 +31,6 @@
   :config
   (setq avy-keys (list ?u?h?e?t?o?n?a?s?i?d))
   (setq avy-background t))
-
-(use-package flycheck)
-
 
 (use-package company
   :diminish company-mode

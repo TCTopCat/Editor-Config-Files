@@ -1,27 +1,56 @@
-;; Keep org up-to-date ?? Need better way to do this
+;;; org-mode-settings.el --- Ronseal file
 
-;; ORG helper Functions
-(setq org-enforce-todo-dependencies t)
-(defun find-main-todo-file ()
-  "Opens the main to-do file."
-  (interactive)
-  (find-file-other-window "~/Documents/ORG-mode/TODOs.org"))
+;;; Commentary:
+;; Should really up-date this list using the org mode beginner customization guide
+
+;;; Code:
 
 (use-package org
-  ;; :ensure org-plus-contrib
-  :defer 7
+  :ensure org-plus-contrib
+  :pin repo-org
+
+  :init
+  (setq org-directory "~/Notes/")
+  (setq org-log-done 'time)
+  (setq org-tags-column -80)
+  (setq org-hide-emphasis-markers t)
+
+  ;; org-babel								;
+  (setq org-src-fontify-natively t
+		org-src-tab-acts-natively t
+		org-src-strip-leading-and-trailing-blank-lines t
+		org-src-window-setup 'current-window)
+  (org-babel-do-load-languages 'org-babel-load-languages
+							   (append org-babel-load-languages
+									   '((latex . t))
+									   '((python . t))
+									   '((sh . t))
+									   ))
+  (setq org-babel-default-header-args:latex
+		'((:results . "raw")))
+  ;; Display 
+  (setq org-pretty-entities t)
+  (setq org-startup-indented t)
+  (setq org-hide-leading-stars t)
+  (setq org-odd-levels-only nil)
+  (setq org-ellipsis "▼")
+  (use-package org-bullets
+	:config
+	(add-hook 'org-mode-hook (lambda ()
+							   (org-bullets-mode 1)
+							   (org-indent-mode 1)
+							   )))
+  ;; TODO States
+  (setq org-log-into-drawer t)
+  (setq org-treat-insert-todo-heading-as-state-change t)
+  (setq org-todo-keywords '((sequence "TODO(t!)" "WAITING(w@/!)" "|" "DONE(d@)" "CANCEL(c@)")))
+  (setq org-use-fast-todo-selection t)
+  (setq org-treat-S-cursor-todo-selection-as-state-change nil)
+  
   :config
   (use-package org-download)
   ;; LaTeX hook settings
-  (add-hook 'LaTeX-mode-hook 'flyspell-mode t)
-  (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
   (setq org-latex-create-formula-image-program 'imagemagick)
-  (setq org-src-fontify-natively t)
-  (setq org-src-tab-acts-natively t)
-  (setq org-pretty-entities t)
-  (org-babel-do-load-languages 'org-babel-load-languages '((latex . t)))
-  (setq org-babel-default-header-args:latex
-		'((:results . "raw")))
   :bind
   (("C-c t" . find-main-todo-file)
    ("C-c a" . org-agenda)
@@ -31,6 +60,12 @@
 (eval-after-load 'org
   '(setf org-highlight-latex-and-related '(latex script entities)))
 
+;; ORG TODO settings
+(setq org-enforce-todo-dependencies t)
+(defun find-main-todo-file ()
+  "Opens the main to-do file."
+  (interactive)
+  (find-file-other-window "~/Documents/ORG-mode/TODOs.org"))
 
 (use-package org-ref
   :after org
@@ -54,13 +89,6 @@
 		 ("n" "Next Task" entry (file+headline org-default-notes-file "Tasks")
 		  "** NEXT %? \nDEADLINE: %t"))))
 
-;; ORG display
-(use-package org-bullets
-  :config
-  (add-hook 'org-mode-hook (lambda ()
-							 (org-bullets-mode 1)
-							 (org-indent-mode 1)
-							 )))
 
 ;; TODO: drag-n-drop file to org document inserts link to file
 

@@ -16,8 +16,9 @@
 ;;   (add-hook 'org-mode-hook 'predictive-mode t)
 ;;   )
 
-(add-hook 'LaTeX-mode-hook 'set-buffer-olivetti-variable-pitch)
 (add-hook 'LaTeX-mode-hook 'flyspell-mode t)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(add-hook 'LaTeX-mode-hook 'set-buffer-olivetti-variable-pitch)
 
 ;; Custom structure templates
 										;LaTeX

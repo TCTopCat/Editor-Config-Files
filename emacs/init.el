@@ -1,9 +1,15 @@
+;;; init.el --- Here, I setup my version of 'the' text editor.
+
+;;; Commentary:
+;;This is where I em... comment.
+
+;;; Code:
 ;; setting up use-package
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
+(add-to-list 'package-archives '("repo-org" . "http://orgmode.org/elpa/"))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)

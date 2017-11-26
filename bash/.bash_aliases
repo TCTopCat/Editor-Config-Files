@@ -1,7 +1,7 @@
 #Folder Viewing and  Navigation
 alias ..='cd ..'
 alias ...='cd ../..'
-alias l='ls -t --color --group-directories-first'
+alias l='ls --color --group-directories-first'
 alias ll='l -l'
 alias la='l -A'
 alias c='clear'

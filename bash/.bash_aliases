@@ -15,6 +15,7 @@ alias doc='cd ~/Documents && c'
 alias dow='cd ~/Downloads && c'
 alias drop='cd ~/Dropbox'
 alias wig='cd ~/Wigner'
+alias vim='nvim'
 
 #Programs
 function e() { emacsclient -c "$@"  --alternate-editor="emacs"  --frame-parameters="((height . 80) (width . 83) (left . 1500))" ; }

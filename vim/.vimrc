@@ -14,9 +14,11 @@ endif
 call plug#begin('~/.vim/plugged')
 "Vim Interface
 Plug 'itchyny/lightline.vim'
-"let g:lightline = { 'colorscheme': 'solarized', }               "vim-lightline
 set laststatus=2                                                "vim-lightline
 set noshowmode                                                  "vim-lightline
+Plug 'roxma/nvim-completion-manager'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 "File management
 Plug 'ctrlpvim/ctrlp.vim'
@@ -54,17 +56,33 @@ Plug 'jiangmiao/auto-pairs'
 
 "Display
 Plug 'junegunn/limelight.vim'
-Plug 'sonph/onehalf'
+Plug 'rakr/vim-one'
 
 call plug#end()
-
-"colorscheme onehalflight
-"let g:lightline.colorscheme='onehalfdark'
+"-------------------------------------------------------------------------
 
 " reloads .vimrc -- making all changes active
 map <silent> <Leader>v :source ~/.vimrc<CR>:PlugInstall<CR>:bdelete<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
+"Display
+"------------------------
+set termguicolors
+set inccommand=nosplit
 
+colorscheme one
+set background=dark
+let g:one_allow_italics = 1
+let g:airline_theme = 'one'
+
+"Hybrid numbering system
+set number relativenumber
+
+augroup numbertoggle
+	autocmd!
+	autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+	autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+augroup END
+"----------------------------
 
 " File navigation (instead of NerdTree)
 " absolute width of netrw window
@@ -93,3 +111,8 @@ map <CR> o<Esc>k
 
 "Permissions
 cmap w!! %!sudo tee > /dev/null %
+
+"Inbuilt terminal for neovim
+"--------------------------------------
+tnoremap <Esc> <C-\><C-n>
+"--------------------------------------

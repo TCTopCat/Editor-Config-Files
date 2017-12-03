@@ -22,7 +22,8 @@
 (use-package atom-dark-theme
   :init
   (load-theme 'atom-dark t))
-										; Window display
+
+;; Window display
 (use-package powerline
   :config (powerline-center-evil-theme))
 (use-package transpose-frame)
@@ -57,6 +58,7 @@
 
 ;; Global highlighting
 (use-package rainbow-delimiters)
+(use-package focus)
 										; (setq auto-fill-mode t)
 
 ;; Fonts

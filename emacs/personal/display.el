@@ -6,16 +6,14 @@
 
 (setq split-height-threshold nil)
 (setq split-width-threshold 70)
+(use-package nlinum-relative
+  :config
+  (nlinum-relative-setup-evil)
+  (add-hook 'prog-mode-hook 'nlinum-relative-mode)
+  (setq nlinum-relative-redisplay-delay 0)
+  (setq nlinum-relative-offset 0))
 
 ;; Themes
-(use-package zenburn-theme
-  :defer t)
-(use-package material-theme
-  :defer t)
-(use-package spacemacs-dark-theme
-  :defer t)
-(use-package darktooth-theme
-  :defer t)
 (use-package atom-one-dark-theme
   :config
   (load-theme 'atom-one-dark t))

@@ -41,6 +41,7 @@
 (load "python-settings.el")
 (load "mathematica-settings.el")
 (load "android-settings.el")
+(load "backup-settings.el")
 
 ;;; init.el ends here
 

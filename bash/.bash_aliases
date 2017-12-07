@@ -23,3 +23,5 @@ function e() { emacsclient -c "$@"  --alternate-editor="emacs"  --frame-paramete
 #alias e='emacsclient --alternate-editor="emacs" -e "(select-frame-set-input-focus (selected-frame))" -c '
 
 alias pacu='pacaur -Syyu'
+alias pacs='pacaur -S'
+alias pacss='pacaur -Ss'

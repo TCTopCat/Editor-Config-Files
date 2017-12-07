@@ -57,6 +57,8 @@ call plug#end()
 
 " reloads .vimrc -- making all changes active
 map <silent> <Leader>v :source ~/.vimrc<CR>:PlugInstall<CR>:bdelete<CR>:exe ":echo 'vimrc reloaded'"<CR>
+nnoremap <Leader>rc :vsplit $MYVIMRC<CR>
+
 
 "Display
 "------------------------

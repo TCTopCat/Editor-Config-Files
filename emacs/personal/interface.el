@@ -89,30 +89,30 @@
   (define-key evil-visual-state-map 
     "h" 'evil-backward-char)
   (define-key evil-normal-state-map 
-    "t" 'evil-next-visual-line)
+    "j" 'evil-next-visual-line)
   (define-key evil-visual-state-map 
-    "t" 'evil-next-visual-line)
+    "j" 'evil-next-visual-line)
   (define-key evil-normal-state-map 
-    "gt" 'evil-next-line)
+    "gj" 'evil-next-line)
   (define-key evil-visual-state-map 
-    "gt" 'evil-next-line)
+    "gj" 'evil-next-line)
   (define-key evil-normal-state-map 
-    "n" 'evil-previous-visual-line)
+    "k" 'evil-previous-visual-line)
   (define-key evil-visual-state-map 
-    "n" 'evil-previous-visual-line)
+    "k" 'evil-previous-visual-line)
   (define-key evil-normal-state-map 
-    "gn" 'evil-previous-line)
+    "gk" 'evil-previous-line)
   (define-key evil-visual-state-map 
-    "gn" 'evil-previous-line)
+    "gk" 'evil-previous-line)
   (define-key evil-normal-state-map 
-    "s" 'evil-forward-char)
+    "l" 'evil-forward-char)
   (define-key evil-visual-state-map 
-    "s" 'evil-forward-char)
+    "l" 'evil-forward-char)
 										;Move around windows
   (define-key evil-normal-state-map (kbd "M-h") 'evil-window-left)
-  (define-key evil-normal-state-map (kbd "M-t") 'evil-window-down)
-  (define-key evil-normal-state-map (kbd "M-n") 'evil-window-up)
-  (define-key evil-normal-state-map (kbd "M-s") 'evil-window-right)
+  (define-key evil-normal-state-map (kbd "M-j") 'evil-window-down)
+  (define-key evil-normal-state-map (kbd "M-k") 'evil-window-up)
+  (define-key evil-normal-state-map (kbd "M-l") 'evil-window-right)
 										; Escape quits everything
   (defun minibuffer-keyboard-quit ()
 	"Abort recursive edit.

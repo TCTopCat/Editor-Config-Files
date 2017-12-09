@@ -14,12 +14,22 @@
   (setq nlinum-relative-offset 0))
 
 ;; Themes
-(use-package atom-one-dark-theme
-  :config
-  (load-theme 'atom-one-dark t))
-(use-package atom-dark-theme
+;; (use-package atom-one-dark-theme
+;;   :config
+;;   (load-theme 'atom-one-dark t))
+;; (use-package atom-dark-theme
+;;   :init
+;;   (load-theme 'atom-dark t)
+;;   )
+(use-package doom-themes
   :init
-  (load-theme 'atom-dark t))
+  (load-theme 'doom-one)
+  :config
+  (setq doom-themes-enable-bold t
+		doom-themes-enable-italic t)
+  (doom-themes-visual-bell-config)
+  (doom-themes-neotree-config)
+  (doom-themes-org-config))
 
 ;; Window display
 (use-package powerline

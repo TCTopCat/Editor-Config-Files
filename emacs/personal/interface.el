@@ -3,6 +3,7 @@
 (global-set-key (kbd "<f5>") 'revert-buffer)
 (use-package which-key)
 (setq which-key-mode t)
+(setq visible-bell t)
 
 ;; Client-server properties
 (require 'server)

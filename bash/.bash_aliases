@@ -25,4 +25,4 @@ function e() { emacsclient -c "$@"  --alternate-editor="emacs"  --frame-paramete
 alias pacu='pacaur -Syyu'
 alias pacs='pacaur -S'
 alias pacss='pacaur -Ss'
-alias pacro='pacaur -Rns $(pacaur -Qtdq)
+alias pacro='pacaur -Rns $(pacaur -Qtdq)'

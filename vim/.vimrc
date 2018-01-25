@@ -11,7 +11,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 "--------------------------------------------------------------
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/autoload/plug.vim')
 "Vim Interface
 Plug 'itchyny/lightline.vim'
 set laststatus=2                                                "vim-lightline

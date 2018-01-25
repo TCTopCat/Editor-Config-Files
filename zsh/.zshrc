@@ -62,14 +62,18 @@ plugins=(
   vi-mode
   almostontop
   archlinux
+  calc
   colored-man-pages
   emacs
   extract
   git
-#   python
+  python
+  nmap
+  ssh-agent
   sudo
   web-search
   zsh-syntax-highlighting
+  zsh-autosuggestions
   z
 )
 

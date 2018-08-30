@@ -51,6 +51,12 @@ values."
           org-pretty-entities t
           org-hide-leading-stars t
           org-startup-indented t
+          org-bullets-bullet-list '(" ")
+          org-ellipsis "..."
+          org-agenda-block-separator ""
+          org-fontify-whole-heading-line t
+          org-fontify-done-headline t
+          org-fontify-quote-and-verse-blocks t
 
           org-enable-reveal-js-support t
           org-reveal-root "file:///home/weetc/Presentations/reveal.js"
@@ -75,6 +81,7 @@ values."
      (spell-checking :variables
                      enable-flyspell-auto-completion t)
      syntax-checking
+     (theming)
      ;; version-control
      )
    ;; List of additional packages that will be installed without being
@@ -418,7 +425,8 @@ you should place your code here."
   (add-hook 'org-mode-hook 'embrace-org-mode-hook)
   (evil-embrace-enable-evil-surround-integration)
   ;; Variable pitch
-  (set-face-attribute 'variable-pitch t :family "Helvetica Neue" :height 160)
+  ;; (set-face-attribute 'variable-pitch t :family "Helvetica Neue" :height 160)
+  (set-face-attribute 'variable-pitch t :family "ETBembo" :height 160)
   (defun set-buffer-variable-pitch ()
    "With notable exceptions, activates 'variable-pitch mode and 'olivetti-mode, such that the text is (hopefully)
     easier to read."

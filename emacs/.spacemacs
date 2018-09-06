@@ -22,12 +22,11 @@ values."
                       auto-completion-enable-sort-by-usage t
                       )
 
-     ;; better-defaults
      emacs-lisp
      evil-commentary
      (evil-snipe)
      git
-     ;; gnus
+     ;; (gnus)
      html
      (latex :variables
             latex-enable-auto-fill t)
@@ -41,6 +40,7 @@ values."
            mu4e-view-show-images t
            mu4e-view-show-addresses t
            mu4e-enable-mode-line t
+           user-mail-address "clark.thomaswilliam@zoho.eu"
            )
      (org :variables
           org-directory "~/Notes/"
@@ -52,7 +52,9 @@ values."
           org-hide-leading-stars t
           org-startup-indented t
           org-bullets-bullet-list '(" ")
-          org-ellipsis "..."
+          org-ellipsis "⤵"
+          ;; org-ellipsis " ⮟"
+
           org-agenda-block-separator ""
           org-fontify-whole-heading-line t
           org-fontify-done-headline t
@@ -65,7 +67,7 @@ values."
           org-highlight-latex-and-related '(latex script entities)
 
           org-enable-github-support t
-          org-todo-keywords '((sequence "TODO" "SUSPENDED" "|" "DONE"))
+          org-todo-keywords '((sequence "TODO(t)"  "SUSPENDED(s)"  "|" "DONE(d)" ))
           )
      (pdf :variables
                 pdf-view-display-size 'fit-width
@@ -81,7 +83,7 @@ values."
      (spell-checking :variables
                      enable-flyspell-auto-completion t)
      syntax-checking
-     (theming)
+     ;; (theming)
      ;; version-control
      )
    ;; List of additional packages that will be installed without being
@@ -156,8 +158,11 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-light
-                         spacemacs-dark)
+   dotspacemacs-themes '(
+                         doom-spacegrey
+                         doom-molokai
+                         spacemacs-light
+                         )
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `vim-powerline' and `vanilla'. The first three
@@ -336,7 +341,7 @@ values."
 
    ;; If non-nil, advise quit functions to keep server open when quitting.
    ;; (default nil)
-   dotspacemacs-persistent-server nil
+   dotspacemacs-persistent-server t
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `rg', `ag', `pt', `ack' and `grep'.
    ;; (default '("rg" "ag" "pt" "ack" "grep"))
@@ -426,7 +431,7 @@ you should place your code here."
   (evil-embrace-enable-evil-surround-integration)
   ;; Variable pitch
   ;; (set-face-attribute 'variable-pitch t :family "Helvetica Neue" :height 160)
-  (set-face-attribute 'variable-pitch t :family "ETBembo" :height 160)
+  (set-face-attribute 'variable-pitch t :family "ETBembo" :height 130)
   (defun set-buffer-variable-pitch ()
    "With notable exceptions, activates 'variable-pitch mode and 'olivetti-mode, such that the text is (hopefully)
     easier to read."
@@ -457,6 +462,7 @@ you should place your code here."
          smtpmail-local-domain        "zoho.eu"
          smtpmail-stream-type  'ssl
          smtpmail-smtp-service 465
+         smtpmail-smtp-user "clark.thomaswilliam"
          )
 
 
@@ -467,7 +473,7 @@ you should place your code here."
     (yas-activate-extra-mode 'latex-mode))
   (add-hook 'org-mode-hook #'my-org-latex-yas)
 
-  (eval-after-load 'ox-latex
+  (with-eval-after-load 'ox-latex
     (add-to-list 'org-latex-classes '("revtex4-1"
                                       "\\documentclass[aps,prl,twocolumn]{revtex4-1}
  [NO-DEFAULT-PACKAGES]
@@ -477,9 +483,11 @@ you should place your code here."
                                       ("\\subsection{%s}" . "\\subsection*{%s}")
                                       ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                                       ("\\paragraph{%s}" . "\\paragraph*{%s}")
-                                      ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
-  (require 'ox-extra)
-  (ox-extras-activate '(ignore-headlines))
+                                      ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+    (require 'ox-extra)
+    (ox-extras-activate '(ignore-headlines))
+    )
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -514,8 +522,7 @@ This function is called at the very end of Spacemacs initialization."
  '(org-agenda-files (quote ("~/Nextcloud/Personal/TODO.org")))
  '(package-selected-packages
    (quote
-    (string-inflection impatient-mode helm-mu wolfram-mode visual-fill-column mmm-mode markdown-toc markdown-mode gh-md org-mime mu4e-maildirs-extension mu4e-alert ht auctex-latexmk flyspell-popup zenburn-theme zen-and-art-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rainbow-mode rainbow-identifiers railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme farmhouse-theme evil-embrace embrace espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized color-identifiers-mode clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme evil-snipe xterm-color web-mode tagedit slim-mode shell-pop scss-mode sass-mode pug-mode ox-reveal ox-gfm org-ref pdf-tools key-chord ivy tablist multi-term less-css-mode interleave helm-css-scss helm-company helm-c-yasnippet helm-bibtex parsebib haml-mode fuzzy evil-commentary eshell-z eshell-prompt-extras esh-help emmet-mode company-web web-completion-data company-statistics company-quickhelp company-auctex company-anaconda company biblio biblio-core auto-yasnippet yasnippet auctex ac-ispell auto-complete smeargle orgit magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit ghub let-alist with-editor auto-dictionary yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode anaconda-mode pythonic org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
- '(send-mail-function (quote mailclient-send-it)))
+    (counsel-projectile counsel wolfram-mode visual-fill-column mmm-mode markdown-toc markdown-mode gh-md org-mime mu4e-maildirs-extension mu4e-alert ht auctex-latexmk flyspell-popup zenburn-theme zen-and-art-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rainbow-mode rainbow-identifiers railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme farmhouse-theme evil-embrace embrace espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized color-identifiers-mode clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme evil-snipe xterm-color web-mode tagedit slim-mode shell-pop scss-mode sass-mode pug-mode ox-reveal ox-gfm org-ref pdf-tools key-chord ivy tablist multi-term less-css-mode interleave helm-css-scss helm-company helm-c-yasnippet helm-bibtex parsebib haml-mode fuzzy evil-commentary eshell-z eshell-prompt-extras esh-help emmet-mode company-web web-completion-data company-statistics company-quickhelp company-auctex company-anaconda company biblio biblio-core auto-yasnippet yasnippet auctex ac-ispell auto-complete smeargle orgit magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit ghub let-alist with-editor auto-dictionary yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode anaconda-mode pythonic org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f dash s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
